@@ -1,11 +1,4 @@
-//
-//  main.swift
-//  Dragon&Crystals
-//
-//  Created by new owner on 25/6/25.
-//
+let consoleView = ConsoleView()
 
-import Foundation
-
-print("Hello, World!")
-
+let gameController = GameController(consoleView: consoleView)
+gameController.startGame()
