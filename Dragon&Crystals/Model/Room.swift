@@ -20,6 +20,7 @@ enum Item: GameItem{
         case key
         case chest
         case torchlight
+        case food
     var name: String{
         switch self {
         case .key:
@@ -28,6 +29,8 @@ enum Item: GameItem{
             return "chest"
         case .torchlight:
             return "torchlight"
+        case .food:
+            return "food"
         }
     
     }
@@ -38,6 +41,8 @@ enum Item: GameItem{
         case .chest:
             return false
         case .torchlight:
+            return true
+        case .food:
             return true
         }
     }

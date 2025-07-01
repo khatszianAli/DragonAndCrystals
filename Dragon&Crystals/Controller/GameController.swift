@@ -61,11 +61,12 @@ class GameController {
             consoleView.display("Ошибка: Не удалось найти текущую комнату.")
             return
         }
-        game.drawRoom()
+        
         if(game.checkDarkRoom()){
             consoleView.display("Can’t see anything in this dark place!")
         }
         consoleView.display(current.description())
+        game.drawRoom()
     }
 
     private func processCommand(_ command: String) {
@@ -120,6 +121,17 @@ class GameController {
             let item = parts[1]
             if !game.tryDropItem(item: item) {
                 consoleView.display("Предмет '\(item)' не найден в вашем инвентаре.")
+            }
+        case "eat":
+            guard parts.count > 1 else {
+                consoleView.display("Что вы хотите съесть? (Используйте: eat [предмет])")
+                return
+            }
+            let item = parts[1]
+            if !game.tryEat(item: item) {
+                consoleView.display("Предмет '\(item)' не найден в вашем инвентаре, или его нельзя съесть.")
+            }else{
+                print("Вы удачно восполнили свои жизненные силы")
             }
         case "open":
             guard parts.count > 1 && parts[1] == "chest" else {

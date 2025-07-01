@@ -41,7 +41,9 @@ class Game{
         if current.items.contains(.torchlight){
             matrix[1][2] = " T"
         }
-        
+        if current.items.contains(.food){
+            matrix[3][2] = " F"
+        }
         for row in matrix{
             print(row.joined())
             
@@ -74,6 +76,17 @@ class Game{
         
         if let drop = player.drop_item(item){
             current.items.append(drop)
+            return true
+        }
+        return false
+    }
+    func tryEat(item: String) -> Bool{
+        if player.inventory.contains(.food){
+            player.playersteps += Int.random(in: 5...15)
+            if let index = player.inventory.firstIndex(of: .food){
+                player.inventory.remove(at: index)
+            }
+            
             return true
         }
         return false

@@ -69,14 +69,27 @@ class MazeGenerator{
                      let darkRoomCoord = allCoordinates.randomElement() else {
                    continue
                }
+               var n = width > 4 ? 3 : 2
+               while n != 0{
+                   var prevFoodCoords: Coordinates?
+                   guard var foodCoords = allCoordinates.randomElement() else {
+                       continue
+                   }
+                   while(prevFoodCoords == foodCoords){
+                       foodCoords = allCoordinates.randomElement()!
+                   }
+                   n -= 1;
+                  prevFoodCoords = foodCoords
+                   maze.room(at: foodCoords)?.items.append(.food)
+                   
+               }
                
                if keyCoords == chestCoords { continue }
                if keyCoords == darkRoomCoord || chestCoords == darkRoomCoord { continue }
                if playerStartCoords == darkRoomCoord { continue }
                if playerStartCoords == keyCoords || playerStartCoords == chestCoords { continue }
                if(torchlightCoords == darkRoomCoord){continue}
-               print(darkRoomCoord)
-               print(torchlightCoords)
+            
 
                maze.room(at: keyCoords)?.items.append(.key)
                maze.room(at: chestCoords)?.items.append(.chest)
@@ -103,6 +116,9 @@ class MazeGenerator{
            print("Не удалось сгенерировать подходящий лабиринт после \(maxAttempts) попыток.")
            return nil
        }
+    
+    
+    
     private func dig(from current: Coordinates, grid: inout  [[Room?]],  visited: inout  Set<Coordinates>){
         if grid[current.y][current.x] == nil {
             grid[current.y][current.x] = Room(y: current.y, x: current.x)

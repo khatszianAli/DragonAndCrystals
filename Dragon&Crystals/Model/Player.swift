@@ -7,9 +7,9 @@ struct Coordinates: Hashable{
     func neighbour(in directions: Directions) -> Coordinates{
         switch directions{
         case .north:
-            return Coordinates(x: x, y: y - 1)
-        case .south:
             return Coordinates(x: x, y: y + 1)
+        case .south:
+            return Coordinates(x: x, y: y - 1)
         case .east:
             return Coordinates(x: x + 1, y: y)
         case .west:
