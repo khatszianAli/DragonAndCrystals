@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		20256B3E2E1407D200B43A5D /* Rainbow in Frameworks */ = {isa = PBXBuildFile; productRef = 20256B3D2E1407D200B43A5D /* Rainbow */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		20256B022E0C18FB00B43A5D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -35,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20256B3E2E1407D200B43A5D /* Rainbow in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -77,6 +82,7 @@
 			);
 			name = "Dragon&Crystals";
 			packageProductDependencies = (
+				20256B3D2E1407D200B43A5D /* Rainbow */,
 			);
 			productName = "Dragon&Crystals";
 			productReference = 20256B042E0C18FB00B43A5D /* Dragon&Crystals */;
@@ -106,6 +112,9 @@
 			);
 			mainGroup = 20256AFB2E0C18FB00B43A5D;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				20256B3C2E1407D200B43A5D /* XCRemoteSwiftPackageReference "Rainbow" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 20256B052E0C18FB00B43A5D /* Products */;
 			projectDirPath = "";
@@ -289,6 +298,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20256B3C2E1407D200B43A5D /* XCRemoteSwiftPackageReference "Rainbow" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Rainbow";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20256B3D2E1407D200B43A5D /* Rainbow */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20256B3C2E1407D200B43A5D /* XCRemoteSwiftPackageReference "Rainbow" */;
+			productName = Rainbow;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20256AFC2E0C18FB00B43A5D /* Project object */;
 }
