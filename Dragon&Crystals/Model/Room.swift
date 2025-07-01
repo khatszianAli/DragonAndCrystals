@@ -32,8 +32,8 @@ enum Item: GameItem{
         case .food:
             return "food"
         }
-    
     }
+  
     var isPickable: Bool{
         switch self{
         case .key:
@@ -67,9 +67,8 @@ class Room{
         if(items.isEmpty){
             desc += "none "
         }else{
-            for item in items{
-                desc += "\(item) "
-            }
+            desc += items.map { $0.name }.joined(separator: ", ")
+            
         }
         return desc
     }

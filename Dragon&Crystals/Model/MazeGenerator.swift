@@ -46,7 +46,7 @@ class MazeGenerator{
                let generatedRoomsCount = grid.flatMap { $0 }.compactMap { $0 }.count
 
                guard generatedRoomsCount == allRoomsCount else {
-                  print("Warning: Maze generation failed to connect all rooms (\(generatedRoomsCount)/\(allRoomsCount) generated). Retrying...")
+                   consoleView.display("Warning: Maze generation failed to connect all rooms (\(generatedRoomsCount)/\(allRoomsCount) generated). Retrying...")
                   continue
                 }
 
@@ -105,15 +105,15 @@ class MazeGenerator{
                let player = Player(playersteps: initialSteps, currentroomCoordinates: playerStartCoords)
 
                if keyReachable && chestReachable && keyPathLength + chestPathLength <= initialSteps {
-                   print("Лабиринт успешно сгенерирован и проходим. Начальных шагов: \(initialSteps)")
+                   consoleView.display("Лабиринт успешно сгенерирован и проходим. Начальных шагов: \(initialSteps)")
                    return (maze, player, initialSteps)
                } else {
-                   print("Сгенерированный лабиринт не соответствует условиям (непроходим или слишком длинный путь). Повторная попытка...")
+                   consoleView.display("Сгенерированный лабиринт не соответствует условиям (непроходим или слишком длинный путь). Повторная попытка...")
                    maze.room(at: keyCoords)?.items.removeAll(where: { $0 == .key })
                    maze.room(at: chestCoords)?.items.removeAll(where: { $0 == .chest })
                }
            }
-           print("Не удалось сгенерировать подходящий лабиринт после \(maxAttempts) попыток.")
+        consoleView.display("Не удалось сгенерировать подходящий лабиринт после \(maxAttempts) попыток.")
            return nil
        }
     

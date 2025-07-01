@@ -131,7 +131,7 @@ class GameController {
             if !game.tryEat(item: item) {
                 consoleView.display("Предмет '\(item)' не найден в вашем инвентаре, или его нельзя съесть.")
             }else{
-                print("Вы удачно восполнили свои жизненные силы")
+                consoleView.display("Вы удачно восполнили свои жизненные силы")
             }
         case "open":
             guard parts.count > 1 && parts[1] == "chest" else {

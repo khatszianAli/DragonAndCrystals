@@ -45,7 +45,7 @@ class Game{
             matrix[3][2] = " F"
         }
         for row in matrix{
-            print(row.joined())
+            consoleView.display(row.joined())
             
         }
     }
@@ -98,15 +98,15 @@ class Game{
         let hasKey = player.inventory.contains(Item.key)
         
         if chestInRoom && hasKey{
-            print("Вы открыли сундук ключом! Внутри вы находите священный Грааль!")
-            print("ПОБЕДА! Вы выиграли игру!")
+            consoleView.display("Вы открыли сундук ключом! Внутри вы находите священный Грааль!")
+            consoleView.display("ПОБЕДА! Вы выиграли игру!")
             gameWin = true
             gameOver = true
             return true
         }else if !chestInRoom{
-            print("В этом комнате нет сундука!")
+            consoleView.display("В этом комнате нет сундука!")
         }else{
-            print("У вас нет ключа, чтобы открыть этот сундук.")
+            consoleView.display("У вас нет ключа, чтобы открыть этот сундук.")
         }
         return false
     }
@@ -125,8 +125,8 @@ class Game{
     }
     func checkLoss(){
         if player.playersteps <= 0{
-            print("У вас закончились шаги, и вы умерли от голода в мрачных застенках драконьей пещеры.")
-            print("ПОРАЖЕНИЕ! Игра окончена.")
+            consoleView.display("У вас закончились шаги, и вы умерли от голода в мрачных застенках драконьей пещеры.")
+            consoleView.display("ПОРАЖЕНИЕ! Игра окончена.")
             gameOver = true
         }
     }

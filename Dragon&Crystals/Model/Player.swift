@@ -35,26 +35,26 @@ class Player{
     func get_item(_ item: Item){
         if(item.isPickable){
             inventory.append(item)
-            print("Вы подобрали \(item.name).")
+            consoleView.display("Вы подобрали \(item.name).")
         }else{
-            print( "Вы не можете поднять этот предмет.")
+            consoleView.display( "Вы не можете поднять этот предмет.")
         }
         
     }
     func drop_item(_ itemName: String) -> Item?{
         if let index = inventory.firstIndex(where: { $0.name.lowercased()==itemName.lowercased() }) {
                     let removedItem = inventory.remove(at: index)
-                    print("Вы выбросили \(removedItem.name).")
+            consoleView.display("Вы выбросили \(removedItem.name).")
                 return removedItem
                 }
         return nil
     }
     func showInventory(){
         if inventory.isEmpty{
-            print("Ваш инвентарь пуст")
+            consoleView.display("Ваш инвентарь пуст")
         }else{
             let items = inventory.map{$0.name}.joined(separator: ", ")
-            print("Ваш инвентарь: \(items)")
+            consoleView.display("Ваш инвентарь: \(items)")
         }
     }
 }
